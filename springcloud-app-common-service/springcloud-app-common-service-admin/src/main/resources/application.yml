@@ -1,0 +1,56 @@
+---
+info:
+  version: @project.version@
+
+logging:
+  file: "target/boot-admin-sample.log"
+  level:
+    root: DEBUG
+    java.sql: DEBUG
+    com.orrin.: debug
+
+management:
+  context-path: "/mgmt"
+
+spring:
+  application:
+    name: common-service-admin
+  boot:
+    admin:
+      url: http://admin.orrin.com:7999
+      turbine:
+        location: common-service-turbine
+  profiles:
+    active:
+      - secure
+server:
+  port: 7999
+
+---
+spring:
+  profiles: insecure
+
+management:
+  security:
+    enabled: false
+
+security:
+  basic:
+    enabled: false
+
+---
+spring:
+  profiles: secure
+  boot:
+    admin:
+      username: ${security.user.name}         #These two are needed so that the client
+      password: ${security.user.password}   #can register at the protected server api
+      client:
+        metadata:
+          user.name: ${security.user.name}          #These two are needed so that the server
+          user.password: ${security.user.password} #can access the proteceted client endpoints
+
+security:
+  user:
+    name: mgmt
+    password: mgmt

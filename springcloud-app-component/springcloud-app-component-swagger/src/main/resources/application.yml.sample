@@ -1,0 +1,15 @@
+swagger2:
+  docket:
+    basepackage:
+    paths:
+    groupName:
+    pathMapping:
+
+  apiInfo:
+    title:
+    description:
+    termsOfServiceUrl:
+    contact_name:
+    contact_url:
+    contact_email:
+    version:

@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: common-service-config
+  cloud:
+    config:
+      enabled: true
+      server:
+        git:
+          uri: https://github.com/zhangorrin/scaffolding-projects
+          search-paths: springcloud-app-respo
+          username:
+          password:
+  boot:
+    admin:
+      url: http://admin.orrin.com:7999
+      username: mgmt       #These two are needed so that the client
+      password: mgmt   #can register at the protected server api
+
+#management:
+#  security:
+#    enabled: false
+
+# Define the port where the Service Registry server would be running
+server:
+  port: 8766
+
+# Defines the Eureka server that is used by the Netflix OSS components to use as the registry
+# for server discovery
+eureka:
+  instance:
+    port: 8761
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://eureka.orrin.com:8761}/eureka/
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+
+security:
+  user:
+    name: mgmt
+    password: mgmt
+
+management:
+  context-path: /mgmt
+  security:
+    enabled: false
+
+
+info:
+  version: @project.version@

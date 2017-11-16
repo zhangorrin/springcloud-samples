@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: common-service-eureka
+  boot:
+    admin:
+      url: http://admin.orrin.com:7999
+      username: mgmt
+      password: mgmt
+
+
+# Define the port where the Service Registry server would be running
+server:
+  port: 8761
+
+# Defines the Eureka server that is used by the Netflix OSS components to use as the registry
+# for server discovery
+eureka:
+  instance:
+    hostname: eureka.orrin.com
+    port: ${server.port}
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+management:
+  context-path: /mgmt
+  security:
+    enabled: false
+
+info:
+  version: @project.version@

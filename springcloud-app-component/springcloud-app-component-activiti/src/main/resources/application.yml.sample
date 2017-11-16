@@ -1,0 +1,8 @@
+spring:
+  activiti:
+    separateDB: true
+    database:
+      url: #jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+      username:
+      password:
+      driver-class-name: com.mysql.jdbc.Driver

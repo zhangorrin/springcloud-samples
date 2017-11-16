@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.8.RELEASE</version>
+    </parent>
+
+    <groupId>orrin.com</groupId>
+    <artifactId>springcloud-app-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <description>springcloud-app-parent</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring-boot-admin.version>1.5.3</spring-boot-admin.version>
+        <jolokia-core.version>1.3.5</jolokia-core.version>
+        <redisson.version>3.5.0</redisson.version>
+        <mybatis-spring-boot-starter.version>1.3.0</mybatis-spring-boot-starter.version>
+        <pagehelper-spring-boot-starter.version>1.1.3</pagehelper-spring-boot-starter.version>
+        <druid-spring-boot-starter.version>1.1.2</druid-spring-boot-starter.version>
+        <mysql-connector-java.version>6.0.6</mysql-connector-java.version>
+        <docker.registry>localhost:5000</docker.registry>
+        <hibernate-validator-version>5.3.5.Final</hibernate-validator-version>
+        <springfox-version>2.7.0</springfox-version>
+        <swagger-core-version>1.5.13</swagger-core-version>
+        <rocketmq.version>4.1.0-incubating</rocketmq.version>
+        <activiti.version>6.0.0</activiti.version>
+        <fastdfs.version>1.25.4-RELEASE</fastdfs.version>
+        <commons-pool2.version>2.4.2</commons-pool2.version>
+        <fastdfs-client-java.version>1.25</fastdfs-client-java.version>
+        <disruptor.version>3.3.6</disruptor.version>
+        <akka-actor_2.12.version>2.5.4</akka-actor_2.12.version>
+        <joda-time.version>2.9.9</joda-time.version>
+        <usertype.core.version>5.0.0.GA</usertype.core.version>
+        <jackson.version>2.8.8</jackson.version>
+        <log4jdbc.version>1.2</log4jdbc.version>
+        <aspectj.version>1.8.12</aspectj.version>
+    </properties>
+
+    <dependencies>
+        <!--
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+        </dependency>
+        -->
+
+        <!-- spring boot test-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Dalston.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server-ui</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server-ui-hystrix</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server-ui-turbine</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server-ui-login</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jolokia</groupId>
+                <artifactId>jolokia-core</artifactId>
+                <version>${jolokia-core.version}</version>
+            </dependency>
+
+            <!-- redisson-->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+
+            <!--mybatis-spring-boot-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-starter.version}</version>
+            </dependency>
+
+            <!--pagehelper-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper-spring-boot-starter.version}</version>
+            </dependency>
+
+            <!--Druid数据库连接池和监控-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid-spring-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-core</artifactId>
+                <version>${swagger-core-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator-version}</version>
+            </dependency>
+
+            <!-- RocketMq客户端相关依赖 -->
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-client</artifactId>
+                <version>${rocketmq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-common</artifactId>
+                <version>${rocketmq.version}</version>
+            </dependency>
+
+            <!-- activiti相关依赖 -->
+            <!-- https://www.activiti.org/userguide/index.html#springSpringBoot -->
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-spring-boot-starter-basic</artifactId>
+                <version>${activiti.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-spring-boot-starter-jpa</artifactId>
+                <version>${activiti.version}</version>
+            </dependency>
+
+            <!-- fastdfs 相关依赖 -->
+            <!-- https://github.com/tobato/FastDFS_Client -->
+            <dependency>
+                <groupId>com.github.tobato</groupId>
+                <artifactId>fastdfs-client</artifactId>
+                <version>${fastdfs.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.csource</groupId>
+                <artifactId>fastdfs-client-java</artifactId>
+                <version>${fastdfs-client-java.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool2.version}</version>
+            </dependency>
+
+            <!-- disruptor并发编程依赖 -->
+            <dependency>
+                <groupId>com.lmax</groupId>
+                <artifactId>disruptor</artifactId>
+                <version>${disruptor.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-actor_2.12 -->
+            <dependency>
+                <groupId>com.typesafe.akka</groupId>
+                <artifactId>akka-actor_2.12</artifactId>
+                <version>${akka-actor_2.12.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jadira.usertype</groupId>
+                <artifactId>usertype.extended</artifactId>
+                <version>${usertype.core.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>hibernate-entitymanager</artifactId>
+                        <groupId>org.hibernate</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>slf4j-api</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-parameter-names</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jdk8</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.googlecode.log4jdbc</groupId>
+                <artifactId>log4jdbc</artifactId>
+                <version>${log4jdbc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <!-- jar插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

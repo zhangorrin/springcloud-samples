@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: common-service-turbine
+  boot:
+    admin:
+      url: http://admin.orrin.com:7999
+      username: mgmt         #These two are needed so that the client
+      password: mgmt         #can register at the protected server api
+
+# Define the port where the Service Registry server would be running
+server:
+  port: 8762
+
+
+# Defines the Eureka server that is used by the Netflix OSS components to use as the registry
+# for server discovery
+eureka:
+  instance:
+    port: 8761
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://eureka.orrin.com:8761}/eureka/
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+
+security:
+  basic:
+    enabled: false
+turbine:
+  ### 配置Eureka中的serviceId列表，表明监控哪些服务,逗号间隔
+  app-config: business-service-product,common-service-apigateway,common-service-uaa
+  cluster-name-expression: new String("default")
+
+info:
+  version: @project.version@
+
+management:
+  context-path: /mgmt
+  security:
+    enabled: false

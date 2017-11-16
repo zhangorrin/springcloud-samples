@@ -1,0 +1,1 @@
+docker run -d -p 9001:9001 --restart always --name scab-product localhost:5000/v2/scab-product-withoutsso:1.0-SNAPSHOT

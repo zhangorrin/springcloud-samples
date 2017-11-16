@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: business-service-oauth-resource
+  jpa:
+    show-sql: true
+
+  # 彩色日志
+  output:
+    ansi:
+      enabled: always
+
+  cloud:
+    config:
+      enabled: true
+      label: master
+      discovery:
+        enabled: true
+        service-id: common-service-config
+      profile: dev
+
+# Define the port where the Widget Foundry server would be running
+server:
+  port: 9003
+
+# Define the Eureka server that handles service registration
+eureka:
+  instance:
+    hostname: www.orrin.com
+    port: 8761
+    metadata-map:
+      user.name: admin         #These two are needed so that the server
+      user.password: pass  #can access the proteceted client endpoints
+  client:
+    serviceUrl:
+      defaultZone: http://eureka.orrin.com:${eureka.instance.port}/eureka/
+
+# Disable spring basic authentication security
+security:
+  basic:
+    enabled: false
+
+logging:
+  level:
+    root: debug
+    org.springframework.security: DEBUG
+    java.sql: DEBUG
+    com.orrin.: debug
+
+#info:
+#  version: @project.version@

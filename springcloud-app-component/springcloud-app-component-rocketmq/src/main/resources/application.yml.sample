@@ -1,0 +1,12 @@
+spring:
+  extend:
+    rocketmq:
+      namesrvAddr: 10.89.0.64:9876;10.89.0.65:9876
+      producer:
+        instanceName: abcproduct
+        tranInstanceName: tran-abcproduct
+      consumer:
+        instanceName: abcconsumer
+        subscribe:
+          - subscribe: topic1:TagA || TagB || TagC
+          - subscribe: topic2:*
