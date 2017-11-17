@@ -1,0 +1,41 @@
+spring:
+  boot:
+    admin:
+      url: http://admin.orrin.com:7999
+      username: mgmt       #These two are needed so that the client
+      password: mgmt   #can register at the protected server api
+      client:
+        metadata:
+          user.name: mgmt          #These two are needed so that the server
+          user.password: mgmt #can access the proteceted client endpoints
+  redis:
+    host: redis.orrin.com
+    port: 6379
+    database: 5
+  datasource:
+    druid:
+      url: jdbc:log4jdbc:mysql://mysql.orrin.com:3306/spring-cloud-apigateway?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+      username: root
+      password: 123456
+      driver-class-name: net.sf.log4jdbc.DriverSpy
+      filter:
+        config:
+          enabled: true
+        stat:
+          db-type: mysql
+          log-slow-sql: true
+          slow-sql-millis: 2000
+
+security:
+  user:
+    name: mgmt
+    password: mgmt
+
+logging:
+  level:
+    root: DEBUG
+    java.sql: DEBUG
+    com.orrin.: debug
+
+info:
+  version: @project.version@

@@ -1,0 +1,63 @@
+spring:
+  aop:
+    proxyTargetClass: true
+  application:
+    name: common-service-apigateway
+  jpa:
+    show-sql: true
+    properties:
+      jadira.usertype.autoRegisterUserTypes: true
+  cloud:
+    config:
+      enabled: true
+      label: master
+      discovery:
+        enabled: true
+        service-id: common-service-config
+      profile: dev
+
+# Define the port where the API gateway server would be running
+server:
+  port: 8080
+
+# Define the Eureka server that handles service registration
+eureka:
+  instance:
+    hostname: api.orrin.com
+    port: 8761
+    statusPageUrlPath: ${management.context-path}/info
+    healthCheckUrlPath: ${management.context-path}/health
+  client:
+    serviceUrl:
+      defaultZone: http://eureka.orrin.com:${eureka.instance.port}/eureka
+
+feign:
+  hystrix:
+    enabled: true
+
+zuul:
+  routes:
+    business-service-oauth-resource:
+      path: /business/oauthresource/**
+      serviceId: business-service-oauth-resource
+    business-service-product:
+      path: /business/product/**
+      serviceId: business-service-product
+    business-service-product-withoutsso:
+      path: /business/productwithoutsso/**
+      serviceId: business-service-product-withoutsso
+    common-service-uaa:
+      #sensitiveHeaders:
+      path: /common/uaa/**
+      #stripPrefix: false
+      serviceId: common-service-uaa
+  add-proxy-headers: true
+  sensitive-headers: Cookie,Set-Cookie
+  prefix: /zuul
+
+management:
+  context-path: /mgmt
+
+#management:
+#  security:
+#    enabled: false

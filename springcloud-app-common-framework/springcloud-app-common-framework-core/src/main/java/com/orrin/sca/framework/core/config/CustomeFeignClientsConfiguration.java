@@ -5,9 +5,11 @@ import feign.Contract;
 import feign.Feign;
 import feign.Logger;
 import feign.Retryer;
+import feign.auth.BasicAuthRequestInterceptor;
 import feign.codec.Decoder;
 import feign.codec.Encoder;
 import feign.hystrix.HystrixFeign;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -33,8 +35,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
-public class FeignClientsConfiguration {
-    //private static final Logger logger = LoggerFactory.getLogger(FeignClientsConfiguration.class);
+public class CustomeFeignClientsConfiguration {
+
+    private static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(CustomeFeignClientsConfiguration.class);
 
     @Autowired(required = false)
     private Logger logger;
@@ -83,6 +86,7 @@ public class FeignClientsConfiguration {
         @ConditionalOnMissingBean
         @ConditionalOnProperty(name = "feign.hystrix.enabled", matchIfMissing = true)
         public Feign.Builder feignHystrixBuilder() {
+            LOGGER.info("*********feign.hystrix.enabled**********");
             return HystrixFeign.builder();
         }
     }
@@ -104,5 +108,11 @@ public class FeignClientsConfiguration {
     @ConditionalOnMissingBean(FeignLoggerFactory.class)
     public FeignLoggerFactory feignLoggerFactory() {
         return new DefaultFeignLoggerFactory(logger);
+    }
+
+    @Bean
+    public BasicAuthRequestInterceptor basicAuthRequestInterceptor() {
+        LOGGER.info("*********basicAuthRequestInterceptor**********");
+        return new BasicAuthRequestInterceptor("mgmt", "mgmt");
     }
 }

@@ -23,7 +23,7 @@ spring:
         location: http://admin.orrin.com:8762
         enabled: true
       routes:
-        endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream
+        endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,mgmt/hystrix.stream
   profiles:
     active:
       - secure

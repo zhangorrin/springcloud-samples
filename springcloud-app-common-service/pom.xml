@@ -13,8 +13,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>springcloud-app-common-service-eureka</module>
-        <module>springcloud-app-common-service-apigateway</module>
-        <module>springcloud-app-common-service-uaa</module>
         <module>springcloud-app-common-service-admin</module>
         <module>springcloud-app-common-service-turbine</module>
         <module>springcloud-app-common-service-zipkin</module>
