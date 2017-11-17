@@ -10,6 +10,8 @@ import com.orrin.sca.component.menu.MenuModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -81,7 +83,7 @@ public class SysResourcesServiceImpl implements SysResourcesService {
 	}
 
 	@Override
-	//@Cacheable(value = "common-service-uaa:menuModels", key = "'system-menus'")
+	@Cacheable(value = "common-service-uaa:menuModels", key = "'system-menus'")
 	public List<MenuModel> wrapMenu() {
 		LOGGER.info("wrapMenu");
 		List<SysResourcesEntity> resourcesEntityList = this.findAllMenuSysResources();
@@ -90,14 +92,14 @@ public class SysResourcesServiceImpl implements SysResourcesService {
 	}
 
 	@Override
-	//@CacheEvict(value = "common-service-uaa:menuModels", key = "'system-menus'")
+	@CacheEvict(value = "common-service-uaa:menuModels", key = "'system-menus'")
 	@Transactional(rollbackFor = Exception.class)
 	public SysResourcesEntity saveAndFlush(SysResourcesEntity sysResourcesEntity) {
 		return sysResourcesRepository.saveAndFlush(sysResourcesEntity);
 	}
 
 	@Override
-	//@CacheEvict(value = "common-service-uaa:menuModels", key = "'system-menus'")
+	@CacheEvict(value = "common-service-uaa:menuModels", key = "'system-menus'")
 	@Transactional(rollbackFor = Exception.class)
 	public void delete(String resourceId) {
 		sysResourcesRepository.delete(resourceId);
