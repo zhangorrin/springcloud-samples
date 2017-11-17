@@ -18,19 +18,15 @@ eureka:
   instance:
     port: 8761
   client:
-    registerWithEureka: true
-    fetchRegistry: false
     serviceUrl:
-      defaultZone: ${EUREKA_SERVICE_URL:http://eureka.orrin.com:8761}/eureka/
-  server:
-    waitTimeInMsWhenSyncEmpty: 0
+      defaultZone: http://eureka.orrin.com:${eureka.instance.port}/eureka/
 
 security:
   basic:
     enabled: false
 turbine:
   ### 配置Eureka中的serviceId列表，表明监控哪些服务,逗号间隔
-  app-config: business-service-product,common-service-apigateway,common-service-uaa
+  app-config: common-service-apigateway,common-service-uaa
   cluster-name-expression: new String("default")
 
 info:
