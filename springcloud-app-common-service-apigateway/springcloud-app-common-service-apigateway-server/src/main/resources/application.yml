@@ -14,7 +14,7 @@ spring:
     database: 5
   datasource:
     druid:
-      url: jdbc:log4jdbc:mysql://mysql.orrin.com:3306/spring-cloud-apigateway?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+      url: jdbc:log4jdbc:mysql://mysql.orrin.com:3306/spring-cloud-apigateway?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&serverTimezone=GMT
       username: root
       password: 123456
       driver-class-name: net.sf.log4jdbc.DriverSpy

@@ -96,4 +96,8 @@ public class DateFormat {
 		}
 		return null;
 	}
+
+	public static long nowUNIX() {
+		return System.currentTimeMillis() / 1000;
+	}
 }

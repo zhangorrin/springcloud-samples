@@ -77,9 +77,11 @@ public class PreFilter extends ZuulFilter {
 		String accessToken = request.getHeader("Authorization");
 
 		log.info(" accessToken = {}",accessToken);
-		String AuthorizationPrefix = accessToken.substring(0, 7).toLowerCase();
-		if(AuthorizationPrefix.equalsIgnoreCase("Bearer ")) {
-			accessToken = accessToken.substring(7);
+		if(StringUtils.hasText(accessToken) && accessToken.length() > 7){
+			String AuthorizationPrefix = accessToken.substring(0, 7).toLowerCase();
+			if(AuthorizationPrefix.equalsIgnoreCase("Bearer ")) {
+				accessToken = accessToken.substring(7);
+			}
 		}
 
 		ResponseResult<?> responseResult = null;

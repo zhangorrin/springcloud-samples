@@ -4,6 +4,7 @@ package com.orrin.sca.component.jpa.dao;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
@@ -28,12 +29,25 @@ public class BaseJPARepositoryImpl<E, PK extends Serializable> extends SimpleJpa
     }
 
 
-
     @Override
     public Page<E> queryByExampleWithRange(Example example, List<Range<E>> ranges, Pageable pageable) {
         Specification<E> byExample = new ByExampleSpecification<>(example);
         Specification<E> byRanges = new ByRangeSpecification<>(ranges);
         return findAll(where(byExample).and(byRanges),pageable);
+    }
+
+    @Override
+    public List<E> queryByExampleWithRange(Example example, List<Range<E>> ranges) {
+        Specification<E> byExample = new ByExampleSpecification<>(example);
+        Specification<E> byRanges = new ByRangeSpecification<>(ranges);
+        return findAll(where(byExample).and(byRanges));
+    }
+
+    @Override
+    public List<E> queryByExampleWithRange(Example example, List<Range<E>> ranges, Sort sort) {
+        Specification<E> byExample = new ByExampleSpecification<>(example);
+        Specification<E> byRanges = new ByRangeSpecification<>(ranges);
+        return findAll(where(byExample).and(byRanges),sort);
     }
 
 

@@ -46,6 +46,9 @@ zuul:
     business-service-product-withoutsso:
       path: /business/productwithoutsso/**
       serviceId: business-service-product-withoutsso
+    sanp-up-web:
+      path: /business/sanpup/web/**
+      serviceId: snap-up-web
     common-service-uaa:
       #sensitiveHeaders:
       path: /common/uaa/**

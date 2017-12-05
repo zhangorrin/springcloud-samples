@@ -2,16 +2,16 @@
 - - -
 ## 1. 配置
 在application.yml当中配置相关参数
-```
+```yaml
 spring:
    data:
-        elasticsearch:
-            #cluster-name: #默认为elasticsearch
-            #cluster-nodes: 127.0.0.1: #配置es节点信息，逗号分隔，如果没有指定，则启动ClientNode
-            properties:
-                path:
-                  logs: ./elasticsearch/log #elasticsearch日志存储目录
-                  data: ./elasticsearch/data #elasticsearch数据存储目录
+    elasticsearch:
+      #cluster-name: #默认为elasticsearch
+      #cluster-nodes: 127.0.0.1: #配置es节点信息，逗号分隔，如果没有指定，则启动ClientNode
+      properties:
+        path:
+          logs: ./elasticsearch/log #elasticsearch日志存储目录
+          data: ./elasticsearch/data #elasticsearch数据存储目录
 ```
 
 ## 2. 使用方法

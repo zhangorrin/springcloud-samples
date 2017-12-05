@@ -2,10 +2,13 @@ package com.orrin.sca.component.redis.config;
 
 public enum Prefixes {
 
-    SYSTEM_MENUS("SYSTEM_MENUS", ""),
-    RESOURCE_AND_AUTHORITIES_LOCK("RESOURCE_AND_AUTHORITIES_LOCK", ""),
-    RESOURCE_AND_AUTHORITIES_SET("RESOURCE:AUTHORIT:RESOURCE_AND_AUTHORITIES_SET",""),
-    SESSION("SESSION:","")
+
+    SNAP_UP_PRODUCT_PRICE("snap_up:product:price", ""),
+
+    SYSTEM_MENUS("system_menus", ""),
+    RESOURCE_AND_AUTHORITIES_LOCK("resource_and_authorities_lock", ""),
+    RESOURCE_AND_AUTHORITIES_SET("resource:authorit:resource_and_authorities_set",""),
+    SESSION("session:","")
 
     ;
 
