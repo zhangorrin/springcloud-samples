@@ -8,6 +8,10 @@ spring:
     properties:
       jadira.usertype.autoRegisterUserTypes: true
   cloud:
+    inetutils:
+      preferred-networks:
+        - 192.168.35
+        - 127.0.0.1
     config:
       enabled: true
       label: master
@@ -15,6 +19,8 @@ spring:
         enabled: true
         service-id: common-service-config
       profile: dev
+  zipkin:
+    base-url: http://zipkin.orrin.com:8763
 
 # Define the port where the API gateway server would be running
 server:
@@ -23,13 +29,12 @@ server:
 # Define the Eureka server that handles service registration
 eureka:
   instance:
-    hostname: api.orrin.com
-    port: 8761
+    hostname: www.orrin.com
     statusPageUrlPath: ${management.context-path}/info
     healthCheckUrlPath: ${management.context-path}/health
   client:
     serviceUrl:
-      defaultZone: http://eureka.orrin.com:${eureka.instance.port}/eureka
+      defaultZone: http://eureka.orrin.com:8761/eureka
 
 feign:
   hystrix:

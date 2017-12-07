@@ -1,11 +1,18 @@
 spring:
   application:
     name: common-service-zipkin
+  cloud:
+    inetutils:
+      preferred-networks:
+        - 192.168.35
+        - 127.0.0.1
   boot:
     admin:
       url: http://admin.orrin.com:7999
       username: mgmt         #These two are needed so that the client
       password: mgmt         #can register at the protected server api
+  #sleuth:
+    #enabled: false
 
 management:
   security:
@@ -20,14 +27,26 @@ server:
 # for server discovery
 eureka:
   instance:
-    port: 8761
+    hostname: www.orrin.com
   client:
     registerWithEureka: true
     fetchRegistry: false
     serviceUrl:
-      defaultZone: ${EUREKA_SERVICE_URL:http://eureka.orrin.com:8761}/eureka/
+      defaultZone: http://eureka.orrin.com:8761/eureka/
   server:
     waitTimeInMsWhenSyncEmpty: 0
+
+#zipkin:
+  #storage:
+    #StorageComponent: elasticsearch
+    #type: elasticsearch
+    #elasticsearch:
+      #cluster: elasticsearch
+      #hosts: mongodb.orrin.com:9301
+      #max-requests: 64
+      #index: zipkin
+      #index-shards: 5
+      #index-replicas: 1
 
 
 info:

@@ -134,6 +134,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		return webExpressionVoter;
 	}
 
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		super.configure(web);
+		web.ignoring().mvcMatchers(HttpMethod.OPTIONS,"/**");
+	}
+
 	@Autowired
 	private RedisConnectionFactory redisConnectionFactory;
 
@@ -141,7 +147,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests().antMatchers("/", "/mgmt/health", "/securityException/accessDenied","/login","/oauth/token", "/oauth/authorize", "/oauth/confirm_access").permitAll();
-		http.authorizeRequests().antMatchers(HttpMethod.OPTIONS,"/oauth/token", "/**").permitAll();
+		http.authorizeRequests().antMatchers(HttpMethod.OPTIONS,"/**").permitAll();
 		//http.formLogin().loginPage("/login").permitAll().and().authorizeRequests().anyRequest().authenticated();
 
 		DefaultTokenServices tokenServices = new DefaultTokenServices();

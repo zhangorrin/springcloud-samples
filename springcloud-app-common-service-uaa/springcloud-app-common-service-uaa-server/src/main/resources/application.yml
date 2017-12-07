@@ -28,6 +28,8 @@ spring:
           db-type: mysql
           log-slow-sql: true
           slow-sql-millis: 2000
+  zipkin:
+    base-url: http://zipkin.orrin.com:8763
 
 logging:
   level:

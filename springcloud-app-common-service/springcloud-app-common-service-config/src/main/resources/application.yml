@@ -2,6 +2,10 @@ spring:
   application:
     name: common-service-config
   cloud:
+    inetutils:
+      preferred-networks:
+        - 192.168.35
+        - 127.0.0.1
     config:
       enabled: true
       server:
@@ -28,12 +32,12 @@ server:
 # for server discovery
 eureka:
   instance:
-    port: 8761
+    hostname: www.orrin.com
   client:
     registerWithEureka: true
     fetchRegistry: false
     serviceUrl:
-      defaultZone: ${EUREKA_SERVICE_URL:http://eureka.orrin.com:8761}/eureka/
+      defaultZone: http://eureka.orrin.com:8761/eureka/
   server:
     waitTimeInMsWhenSyncEmpty: 0
 

@@ -1,6 +1,11 @@
 spring:
   application:
     name: common-service-eureka
+  cloud:
+    inetutils:
+      preferred-networks:
+        - 192.168.35
+        - 127.0.0.1
   boot:
     admin:
       url: http://admin.orrin.com:7999
@@ -16,7 +21,7 @@ server:
 # for server discovery
 eureka:
   instance:
-    hostname: eureka.orrin.com
+    hostname: www.orrin.com
     port: ${server.port}
   client:
     registerWithEureka: false

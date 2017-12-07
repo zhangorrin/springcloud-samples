@@ -1,6 +1,11 @@
 spring:
   application:
     name: common-service-turbine
+  cloud:
+    inetutils:
+      preferred-networks:
+        - 192.168.35
+        - 127.0.0.1
   boot:
     admin:
       url: http://admin.orrin.com:7999
@@ -16,10 +21,10 @@ server:
 # for server discovery
 eureka:
   instance:
-    port: 8761
+    hostname: www.orrin.com
   client:
     serviceUrl:
-      defaultZone: http://eureka.orrin.com:${eureka.instance.port}/eureka
+      defaultZone: http://eureka.orrin.com:8761/eureka
 
 security:
   basic:
