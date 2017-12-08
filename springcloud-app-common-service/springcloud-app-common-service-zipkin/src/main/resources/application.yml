@@ -11,8 +11,8 @@ spring:
       url: http://admin.orrin.com:7999
       username: mgmt         #These two are needed so that the client
       password: mgmt         #can register at the protected server api
-  #sleuth:
-    #enabled: false
+  sleuth:
+    enabled: false
 
 management:
   security:
@@ -36,17 +36,17 @@ eureka:
   server:
     waitTimeInMsWhenSyncEmpty: 0
 
-#zipkin:
-  #storage:
-    #StorageComponent: elasticsearch
-    #type: elasticsearch
-    #elasticsearch:
-      #cluster: elasticsearch
-      #hosts: mongodb.orrin.com:9301
-      #max-requests: 64
-      #index: zipkin
-      #index-shards: 5
-      #index-replicas: 1
+zipkin:
+  storage:
+    StorageComponent: elasticsearch
+    type: elasticsearch
+    elasticsearch:
+      cluster: elasticsearch
+      hosts: mongodb.orrin.com:9300
+      max-requests: 64
+      index: zipkin
+      index-shards: 5
+      index-replicas: 1
 
 
 info:
