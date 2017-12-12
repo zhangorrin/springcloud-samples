@@ -5,7 +5,6 @@ spring:
     inetutils:
       preferred-networks:
         - 192.168.35
-        - 127.0.0.1
   boot:
     admin:
       url: http://admin.orrin.com:7999

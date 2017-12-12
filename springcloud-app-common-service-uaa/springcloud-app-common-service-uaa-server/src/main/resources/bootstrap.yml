@@ -9,7 +9,6 @@ spring:
     inetutils:
       preferred-networks:
         - 192.168.35
-        - 127.0.0.1
     config:
       enabled: false
       label: master
