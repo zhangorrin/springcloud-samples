@@ -37,7 +37,7 @@ public class ParameterValidatorUtils {
 		}
 
 		if(!parameterRightFlag){
-			return messages.substring(messages.length()-1);
+			return messages.substring(0, messages.length()-1);
 		}else {
 			return "";
 		}
