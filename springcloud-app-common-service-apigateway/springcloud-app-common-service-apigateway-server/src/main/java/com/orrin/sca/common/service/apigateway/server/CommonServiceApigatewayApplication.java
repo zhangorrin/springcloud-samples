@@ -1,5 +1,8 @@
 package com.orrin.sca.common.service.apigateway.server;
 
+import com.netflix.zuul.FilterProcessor;
+import com.orrin.sca.common.service.apigateway.server.config.CustomeFilterProcessor;
+import com.orrin.sca.common.service.apigateway.server.config.CustomerErrorAttributes;
 import com.orrin.sca.common.service.apigateway.server.filter.PreFilter;
 import com.orrin.sca.component.jpa.dao.BaseJPARepositoryImpl;
 import com.orrin.sca.component.jpa.parent.ParentApplication;
@@ -9,6 +12,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.autoconfigure.web.DefaultErrorAttributes;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
@@ -44,8 +48,23 @@ public class CommonServiceApigatewayApplication extends ParentApplication {
 		return new PreFilter();
 	}
 
+	/**
+	 * 自定义错误信息
+	 * @return
+	 */
+	@Bean
+	public DefaultErrorAttributes errorAttributes() {
+		return new CustomerErrorAttributes();
+	}
+
 	public static void main(String[] args) {
+
+		//启用自定义核心处理器
+		FilterProcessor.setProcessor(new CustomeFilterProcessor());
+
+
 		SpringApplication.run(CommonServiceApigatewayApplication.class, args);
 	}
+
 
 }
