@@ -14,7 +14,7 @@ public class ApigatewaySpringSecurityConfig extends WebSecurityConfigurerAdapter
 
 	@Override
 	public void configure(WebSecurity webSecurity) throws Exception {
-		webSecurity.ignoring().antMatchers( "/zuul/**","/mgmt/health","/mgmt/health/","/mgmt/hystrix.stream");
+		webSecurity.ignoring().antMatchers( "/gateway/**","/mgmt/health","/mgmt/health/","/mgmt/hystrix.stream");
 	}
 
 	/*@Override

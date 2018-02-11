@@ -60,7 +60,8 @@ zuul:
       serviceId: common-service-uaa
   add-proxy-headers: true
   sensitive-headers: Cookie,Set-Cookie
-  prefix: /zuul
+  prefix: /gateway
+  add-host-header: true
 
 management:
   context-path: /mgmt
