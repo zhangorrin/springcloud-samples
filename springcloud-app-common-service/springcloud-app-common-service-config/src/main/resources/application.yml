@@ -14,6 +14,7 @@ spring:
           search-paths: springcloud-app-respo
           username:
           password:
+          basedir: /common-service-config-files/
   boot:
     admin:
       url: http://admin.orrin.com:7999
